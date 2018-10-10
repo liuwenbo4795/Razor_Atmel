@@ -51,15 +51,13 @@ extern volatile u32 G_u32ApplicationFlags;             /* From main.c */
 
 extern volatile u32 G_u32SystemTime1ms;                /* From board-specific source file */
 extern volatile u32 G_u32SystemTime1s;                 /* From board-specific source file */
-
-
 /***********************************************************************************************************************
 Global variable definitions with scope limited to this local application.
 Variable names shall start with "UserApp1_" and be declared as static.
 ***********************************************************************************************************************/
 static fnCode_type UserApp1_StateMachine;            /* The state machine function pointer */
 //static u32 UserApp1_u32Timeout;                      /* Timeout counter used across states */
-
+static u16 u16BlinkCount = 0;
 
 /**********************************************************************************************************************
 Function Definitions
@@ -88,6 +86,7 @@ Promises:
 void UserApp1Initialize(void)
 {
  
+  
   /* If good initialization, set state to Idle */
   if( 1 )
   {
@@ -119,6 +118,67 @@ Promises:
 void UserApp1RunActiveState(void)
 {
   UserApp1_StateMachine();
+  u16BlinkCount++;
+  if(u16BlinkCount >=0  && u16BlinkCount<=1500)
+  {
+     LedPWM(RED, LED_PWM_100);
+  }
+    if(u16BlinkCount >1500 && u16BlinkCount<=2800)
+  {
+     LedOff(RED);
+     LedOn(ORANGE);
+     LedPWM(ORANGE, LED_PWM_70);
+  }
+    if(u16BlinkCount >2800&& u16BlinkCount<=3900)
+  {
+      LedOff(ORANGE);
+      LedOn(YELLOW);
+      LedPWM(YELLOW, LED_PWM_50);
+  }
+    if(u16BlinkCount >3900  && u16BlinkCount<=4800)
+  {
+     LedOff(YELLOW);
+     LedOn(GREEN);
+     LedPWM(GREEN, LED_PWM_30);
+  }
+    if(u16BlinkCount >4800 && u16BlinkCount<=5500)
+  {
+      LedOff(GREEN);
+      LedOn(CYAN);
+      LedPWM(CYAN, LED_PWM_10);
+  }
+    if(u16BlinkCount >5500  && u16BlinkCount<=6000)
+  {
+     LedOff(CYAN);
+     LedOn(BLUE);
+     LedPWM(BLUE, LED_PWM_10);
+  }
+    if(u16BlinkCount >6000 && u16BlinkCount<=6300)
+  {
+     LedOff(BLUE);
+     LedOn(PURPLE);
+     LedPWM(PURPLE, LED_PWM_5);
+  }
+   if(u16BlinkCount >6300  && u16BlinkCount<=6100)
+  {
+     LedOff(PURPLE);
+     LedOn(WHITE);
+     LedPWM(WHITE, LED_PWM_5);
+
+  }
+  if(u16BlinkCount >6100)
+  {
+  LedOff(CYAN);
+  LedOff(GREEN);
+  LedOff(YELLOW);
+  LedOff(ORANGE);
+  LedOff(RED);
+  LedOff(PURPLE);
+  LedOff(BLUE);
+  LedOff(WHITE);     
+  u16BlinkCount=0;
+  }
+
 
 } /* end UserApp1RunActiveState */
 

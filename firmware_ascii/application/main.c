@@ -20,7 +20,7 @@ volatile u32 G_u32ApplicationFlags = 0;                /* Global applications fl
 extern volatile u32 G_u32SystemTime1ms;                /* From board-specific source file */
 extern volatile u32 G_u32SystemTime1s;                 /* From board-specific source file */
 
-
+extern u16 u16BlinkCount;
 /***********************************************************************************************************************
 Global variable definitions with scope limited to this local application.
 Variable names shall start with "Main_" and be declared as static.
@@ -40,8 +40,9 @@ the 1ms period.
 ***********************************************************************************************************************/
 
 void main(void)
-{
+{  
   G_u32SystemFlags |= _SYSTEM_INITIALIZING;
+
 
   /* Low level initialization */
   WatchDogSetup(); /* During development, does not reset processor if timeout */
