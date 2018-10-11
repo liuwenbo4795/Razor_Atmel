@@ -119,54 +119,54 @@ void UserApp1RunActiveState(void)
 {
   UserApp1_StateMachine();
   u16BlinkCount++;
-  if(u16BlinkCount >=0  && u16BlinkCount<=1500)
+  if(u16BlinkCount >=0  && u16BlinkCount<=1000)
   {
      LedPWM(RED, LED_PWM_100);
   }
-    if(u16BlinkCount >1500 && u16BlinkCount<=2800)
+    if(u16BlinkCount >1000 && u16BlinkCount<=1900)
   {
      LedOff(RED);
      LedOn(ORANGE);
      LedPWM(ORANGE, LED_PWM_70);
   }
-    if(u16BlinkCount >2800&& u16BlinkCount<=3900)
+    if(u16BlinkCount >1900&& u16BlinkCount<=2700)
   {
       LedOff(ORANGE);
       LedOn(YELLOW);
       LedPWM(YELLOW, LED_PWM_50);
   }
-    if(u16BlinkCount >3900  && u16BlinkCount<=4800)
+    if(u16BlinkCount >2700  && u16BlinkCount<=3300)
   {
      LedOff(YELLOW);
      LedOn(GREEN);
      LedPWM(GREEN, LED_PWM_30);
   }
-    if(u16BlinkCount >4800 && u16BlinkCount<=5500)
+    if(u16BlinkCount >3300 && u16BlinkCount<=3800)
   {
       LedOff(GREEN);
       LedOn(CYAN);
       LedPWM(CYAN, LED_PWM_10);
   }
-    if(u16BlinkCount >5500  && u16BlinkCount<=6000)
+    if(u16BlinkCount >3800  && u16BlinkCount<=4200)
   {
      LedOff(CYAN);
      LedOn(BLUE);
      LedPWM(BLUE, LED_PWM_10);
   }
-    if(u16BlinkCount >6000 && u16BlinkCount<=6300)
+    if(u16BlinkCount >4200 && u16BlinkCount<=4500)
   {
      LedOff(BLUE);
      LedOn(PURPLE);
      LedPWM(PURPLE, LED_PWM_5);
   }
-   if(u16BlinkCount >6300  && u16BlinkCount<=6100)
+   if(u16BlinkCount >4500  && u16BlinkCount<=4700)
   {
      LedOff(PURPLE);
      LedOn(WHITE);
      LedPWM(WHITE, LED_PWM_5);
 
   }
-  if(u16BlinkCount >6100)
+  if(u16BlinkCount >4700)
   {
   LedOff(CYAN);
   LedOff(GREEN);
